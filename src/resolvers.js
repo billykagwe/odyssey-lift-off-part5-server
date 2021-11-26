@@ -1,3 +1,5 @@
+/** @format */
+
 const resolvers = {
   Query: {
     // returns an array of Tracks that will be used to populate the homepage grid of our web client
@@ -41,9 +43,15 @@ const resolvers = {
       return dataSources.trackAPI.getAuthor(authorId);
     },
 
+    durationInSeconds: ({ length }) => length,
+
     modules: ({ id }, _, { dataSources }) => {
       return dataSources.trackAPI.getTrackModules(id);
     },
+  },
+
+  Module: {
+    durationInSeconds: ({ length }) => length,
   },
 };
 
